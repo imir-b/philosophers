@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 05:06:03 by username          #+#    #+#             */
-/*   Updated: 2026/04/17 15:15:09 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 18:17:47 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_free_data(t_data *data)
 	{
 		pthread_mutex_destroy(&data->forks[count]);
 		pthread_mutex_destroy(&data->philosophers[count].lmt_mutex);
+		pthread_mutex_destroy(&data->philosophers[count].eat_count_mutex);
 		count++;
 	}
 	pthread_mutex_destroy(&data->someone_died_mutex);

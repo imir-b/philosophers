@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 03:17:53 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 15:11:18 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 18:16:22 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int	ft_eat(t_data *data, t_philosopher *philo)
 	pthread_mutex_lock(&philo->lmt_mutex);
 	philo->last_meal_time = ft_get_timestamp();
 	pthread_mutex_unlock(&philo->lmt_mutex);
+	pthread_mutex_lock(&philo->eat_count_mutex);
 	philo->eat_count++;
+	pthread_mutex_unlock(&philo->eat_count_mutex);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	return (0);
@@ -47,8 +49,13 @@ void	*ft_philosopher_routine(void *arg)
 		usleep(1000);
 	while (!ft_check_death(data))
 	{
+		pthread_mutex_lock(&philo->eat_count_mutex);
 		if (data->n_meals != -1 && philo->eat_count >= data->n_meals)
+		{
+			pthread_mutex_unlock(&philo->eat_count_mutex);
 			break ;
+		}
+		pthread_mutex_unlock(&philo->eat_count_mutex);
 		if (ft_eat(data, philo))
 			return (NULL);
 		ft_print_action(philo, "is sleeping");

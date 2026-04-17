@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
+#    By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 05:09:46 by vbleskin          #+#    #+#              #
-#    Updated: 2026/04/17 16:55:56 by vbleskin         ###   ########.fr        #
+#    Updated: 2026/04/17 18:03:16 by vlad             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 # ------------------------------------------------------------------------------
 
 NAME			=	philo
+NAME_BONUS		=	philo_bonus
 
 # ------------------------------------------------------------------------------
 # DEFINITIONS
@@ -31,24 +32,29 @@ RM				= rm -rf
 
 SRC_DIR			=	src/
 OBJ_DIR			=	obj/
+OBJ_DIR_BONUS	=	obj_bonus/
 
 # ------------------------------------------------------------------------------
 # FILES
 # ------------------------------------------------------------------------------
 
-SRC_FILES		=	main.c \
-					init.c \
-					checker.c \
-					philo_process.c \
-					spectator_process.c \
-					utils/ft_atoi.c \
+SRC_COMMON		=	utils/ft_atoi.c \
 					utils/io.c \
 					utils/time.c
 
-SRC_BONUS		=	
+SRC_MANDATORY	=	mandatory/main.c \
+					mandatory/init.c \
+					mandatory/checker.c \
+					mandatory/philo_process.c \
+					mandatory/spectator_process.c
 
-SRCS			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
+SRC_BONUS		=	bonus/main.c
+
+SRCS_MANDATORY	=	$(addprefix $(SRC_DIR), $(SRC_COMMON) $(SRC_MANDATORY))
+SRCS_BONUS		=	$(addprefix $(SRC_DIR), $(SRC_COMMON) $(SRC_BONUS))
+
+OBJS_MANDATORY	=	$(addprefix $(OBJ_DIR), $(SRC_COMMON:.c=.o) $(SRC_MANDATORY:.c=.o))
+OBJS_BONUS		=	$(addprefix $(OBJ_DIR_BONUS), $(SRC_COMMON:.c=.o) $(SRC_BONUS:.c=.o))
 
 # ------------------------------------------------------------------------------
 # RULES
@@ -61,18 +67,27 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 				@$(CC) $(CFLAGS) -c $< -o $@
 				@echo "Compiling $<"
 
-$(NAME) :		$(OBJS)
-				@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME) :		$(OBJS_MANDATORY)
+				@$(CC) $(CFLAGS) $(OBJS_MANDATORY) -o $(NAME)
 				@echo "$(NAME) compiled successfuly"
 
-bonus : 
+bonus :			$(NAME_BONUS)
+
+$(OBJ_DIR_BONUS)%.o: $(SRC_DIR)%.c
+				@mkdir -p $(dir $@)
+				@$(CC) $(CFLAGS) -c $< -o $@
+				@echo "Compiling $< (bonus)"
+
+$(NAME_BONUS) :	$(OBJS_BONUS)
+				@$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
+				@echo "$(NAME_BONUS) compiled successfuly"
 
 clean :
-				@$(RM) $(OBJ_DIR)
+				@$(RM) $(OBJ_DIR) $(OBJ_DIR_BONUS)
 				@echo "$(NAME) cleaned successfuly"
 
 fclean :		clean
-				@$(RM) $(NAME)
+				@$(RM) $(NAME) $(NAME_BONUS)
 
 re :			fclean all
 

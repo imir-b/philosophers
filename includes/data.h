@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:47:03 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 15:06:17 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 18:08:40 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ struct s_philosopher
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	int				eat_count;
+	pthread_mutex_t	eat_count_mutex;
 	long long		last_meal_time;
 	pthread_mutex_t	lmt_mutex;
 	pthread_t		thread;

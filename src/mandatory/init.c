@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:54:39 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 15:25:44 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 18:10:12 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_create_philosophers(t_data *data)
 		philosophers[count].right_fork = &data->forks[(count + 1)
 			% data->n_philosophers];
 		philosophers[count].eat_count = 0;
+		pthread_mutex_init(&philosophers[count].eat_count_mutex, NULL);
 		philosophers[count].last_meal_time = ft_get_timestamp();
 		pthread_mutex_init(&philosophers[count].lmt_mutex, NULL);
 		philosophers[count].thread = 0;

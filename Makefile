@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
+#    By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 05:09:46 by vbleskin          #+#    #+#              #
-#    Updated: 2026/01/19 05:14:33 by vbleskin         ###   ########.fr        #
+#    Updated: 2026/04/16 06:41:16 by vlad             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME			=	philo
 # ------------------------------------------------------------------------------
 
 CC				= cc
-CFLAGS			= -Wall -Werror -Wextra -I includes -g3
+CFLAGS			= -Wall -Werror -Wextra -I includes -g3 -pthread
 MAKEFLAGS 		+=	--no-print-directory
 RM				= rm -rf
 
@@ -36,7 +36,14 @@ OBJ_DIR			=	obj/
 # FILES
 # ------------------------------------------------------------------------------
 
-SRC_FILES		=	main.c
+SRC_FILES		=	main.c \
+					init.c \
+					check_args.c \
+					process.c \
+					utils/ft_atoi.c \
+					utils/io.c \
+					utils/time.c
+
 SRCS			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:47:03 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 14:07:30 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/17 14:46:57 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_philosopher			t_philosopher;
 
-typedef struct s_data 					t_data;
+typedef struct s_data					t_data;
 
 struct s_philosopher
 {
@@ -24,7 +24,7 @@ struct s_philosopher
 	pthread_mutex_t	*right_fork;
 	int				eat_count;
 	long long		last_meal_time;
-	pthread_mutex_t	last_meal_time_mutex;
+	pthread_mutex_t	lmt_mutex;
 	pthread_t		thread;
 	t_data			*data;
 };

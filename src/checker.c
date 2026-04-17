@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:53:36 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/16 03:29:12 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/17 14:39:57 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,14 @@ int	ft_check_args(int ac, char **av)
 		i++;
 	}
 	return (1);
+}
+
+int	ft_check_death(t_data *data)
+{
+	int	result;
+
+	pthread_mutex_lock(&data->someone_died_mutex);
+	result = data->someone_died;
+	pthread_mutex_unlock(&data->someone_died_mutex);
+	return (result);
 }

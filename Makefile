@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+         #
+#    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 05:09:46 by vbleskin          #+#    #+#              #
-#    Updated: 2026/04/16 06:41:16 by vlad             ###   ########.fr        #
+#    Updated: 2026/04/17 14:40:05 by vbleskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OBJ_DIR			=	obj/
 
 SRC_FILES		=	main.c \
 					init.c \
-					check_args.c \
+					checker.c \
 					process.c \
 					utils/ft_atoi.c \
 					utils/io.c \

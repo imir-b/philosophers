@@ -6,7 +6,7 @@
 #    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 05:09:46 by vbleskin          #+#    #+#              #
-#    Updated: 2026/04/17 14:48:15 by vbleskin         ###   ########.fr        #
+#    Updated: 2026/04/17 16:55:56 by vbleskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRC_FILES		=	main.c \
 					utils/io.c \
 					utils/time.c
 
+SRC_BONUS		=	
+
 SRCS			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
@@ -62,6 +64,8 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 $(NAME) :		$(OBJS)
 				@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 				@echo "$(NAME) compiled successfuly"
+
+bonus : 
 
 clean :
 				@$(RM) $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:53:36 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 14:39:57 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:17:15 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	ft_check_args(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
+		if (av[i][j] == '+')
+			j++;
+		if (av[i][j] == '\0')
+			return (0);
 		while (av[i][j])
 		{
 			if (av[i][j] < '0' || av[i][j] > '9')

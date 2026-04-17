@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:54:39 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 14:31:11 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:25:44 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ int	ft_create_philosophers(t_data *data)
 	return (0);
 }
 
+int	ft_check_data(t_data *data)
+{
+	if (data->n_philosophers <= 0 || data->n_philosophers > 200
+		|| data->time_to_die <= 0 || data->time_to_eat <= 0
+		|| data->time_to_sleep <= 0)
+		return (1);
+	return (0);
+}
+
 t_data	*ft_init_data(int ac, char **av)
 {
 	t_data			*data;
@@ -58,6 +67,8 @@ t_data	*ft_init_data(int ac, char **av)
 		data->n_meals = ft_atoi(av[5]);
 	else
 		data->n_meals = -1;
+	if (ft_check_data(data))
+		return (free(forks), free(data), NULL);
 	data->start_time = ft_get_timestamp();
 	data->forks = forks;
 	data->someone_died = 0;

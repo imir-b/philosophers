@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 05:06:03 by username          #+#    #+#             */
-/*   Updated: 2026/04/17 14:30:24 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:15:09 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_join_threads(t_data *data)
 		pthread_join(data->philosophers[count].thread, NULL);
 		count++;
 	}
+	pthread_join(data->spectator_thread, NULL);
 }
 
 int	main(int ac, char **av)
@@ -55,16 +56,17 @@ int	main(int ac, char **av)
 	if (ft_create_philosophers(data) == 1)
 		return (ft_putstr_fd("Error: Failed to create philosophers\n",
 				STDERR_FILENO), free(data), 1);
+	ft_process_philosophers(data);
 	if (ft_create_spectator(data) == 1)
 	{
 		ft_putstr_fd("Error: Failed to create spectator thread\n",
 			STDERR_FILENO);
+		ft_join_threads(data);
 		free(data->philosophers);
 		free(data->forks);
 		free(data);
 		return (1);
 	}
-	ft_process_philosophers(data);
 	ft_join_threads(data);
 	ft_free_data(data);
 	return (0);

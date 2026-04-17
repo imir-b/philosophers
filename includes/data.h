@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:47:03 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 14:46:57 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:06:17 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ struct s_data
 	int				n_meals;
 	t_philosopher	*philosophers;
 	pthread_mutex_t	*forks;
+	pthread_t		spectator_thread;
 	long long		start_time;
 	int				someone_died;
 	pthread_mutex_t	someone_died_mutex;

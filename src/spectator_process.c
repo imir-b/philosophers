@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:45:10 by vbleskin          #+#    #+#             */
-/*   Updated: 2026/04/17 14:49:25 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:26:44 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,8 @@ void	*ft_spectator_routine(void *arg)
 
 int	ft_create_spectator(t_data *data)
 {
-	pthread_t	spectator_thread;
-
-	if (pthread_create(&spectator_thread, NULL, ft_spectator_routine, data)
+	if (pthread_create(&data->spectator_thread, NULL, ft_spectator_routine, data)
 		!= 0)
 		return (1);
-	pthread_detach(spectator_thread);
 	return (0);
 }

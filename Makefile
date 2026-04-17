@@ -6,7 +6,7 @@
 #    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 05:09:46 by vbleskin          #+#    #+#              #
-#    Updated: 2026/04/17 14:40:05 by vbleskin         ###   ########.fr        #
+#    Updated: 2026/04/17 14:48:15 by vbleskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ OBJ_DIR			=	obj/
 SRC_FILES		=	main.c \
 					init.c \
 					checker.c \
-					process.c \
+					philo_process.c \
+					spectator_process.c \
 					utils/ft_atoi.c \
 					utils/io.c \
 					utils/time.c

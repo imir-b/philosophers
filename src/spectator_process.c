@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:45:10 by vbleskin          #+#    #+#             */
-/*   Updated: 2026/04/17 14:45:34 by vbleskin         ###   ########.fr       */
+/*   Updated: 2026/04/17 14:49:25 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	ft_check_philo_death(t_data *data, t_philosopher *philo)
 		pthread_mutex_lock(&data->someone_died_mutex);
 		data->someone_died = 1;
 		pthread_mutex_unlock(&data->someone_died_mutex);
-		return (NULL);
+		return (1);
 	}
-	else
-		pthread_mutex_unlock(&philo->lmt_mutex);
+	pthread_mutex_unlock(&philo->lmt_mutex);
+	return (0);
 }
 
 void	*ft_spectator_routine(void *arg)

@@ -6,11 +6,21 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 03:17:53 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 18:16:22 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/17 18:44:11 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_check_death(t_data *data)
+{
+	int	result;
+
+	pthread_mutex_lock(&data->someone_died_mutex);
+	result = data->someone_died;
+	pthread_mutex_unlock(&data->someone_died_mutex);
+	return (result);
+}
 
 int	ft_eat(t_data *data, t_philosopher *philo)
 {

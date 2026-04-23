@@ -6,7 +6,7 @@
 #    By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 05:09:46 by vbleskin          #+#    #+#              #
-#    Updated: 2026/04/20 23:32:07 by vlad             ###   ########.fr        #
+#    Updated: 2026/04/23 13:20:27 by vlad             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ OBJ_DIR			=	obj/
 SRC_FILES		=	main.c \
 					data.c \
 					process.c \
+					routine.c \
 					utils/checker.c \
 					utils/ft_atoi.c \
 					utils/io.c \

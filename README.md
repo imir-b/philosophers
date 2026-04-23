@@ -32,10 +32,6 @@ The project uses a `Makefile` to compile the source files.
     `make`
     -> This generates the `philo` executable for the mandatory part.
 
-* **Compile the bonus:**
-    `make bonus`
-    -> This generates the `philo_bonus` executable for the bonus part.
-
 * **Clean object files:**
     `make clean`
 

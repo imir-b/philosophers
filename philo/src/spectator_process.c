@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spectator_process.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:45:10 by vbleskin          #+#    #+#             */
-/*   Updated: 2026/04/17 18:22:46 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/23 16:46:28 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	*ft_spectator_routine(void *arg)
 		all_ate = 0;
 		while (count < data->n_philosophers)
 		{
-			if (ft_check_philo_death(data, &data->philosophers[count], &all_ate))
+			if (ft_check_philo_death(data, &data->philosophers[count],
+					&all_ate))
 				return (NULL);
 			count++;
 		}

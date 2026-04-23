@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 13:18:39 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/23 15:28:16 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/23 16:49:28 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	*ft_spectator_routine(void *arg)
 		if (ft_get_timestamp() - philo->last_meal_time >= data->time_to_die)
 		{
 			sem_wait(data->print_sem);
-			printf("%lld %d died\n", ft_get_timestamp() - data->start_time, philo->id);
+			printf("%lld %d died\n",
+				ft_get_timestamp() - data->start_time, philo->id);
 			exit(1);
 		}
 		usleep(1000);

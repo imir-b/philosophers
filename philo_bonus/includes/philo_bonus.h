@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 18:44:48 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/23 15:25:15 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/23 16:47:58 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_data_bonus				*ft_init_data(int ac, char **av);
 t_philosopher_bonus			*ft_init_philosopher(int id, t_data_bonus *data);
 void						*ft_free_data(t_data_bonus *data);
 int							ft_process_philosophers(t_data_bonus *data);
-void                        ft_philosopher_routine(t_philosopher_bonus *philo, t_data_bonus *data);
-void                        *ft_spectator_routine(void *arg);
+void						ft_philosopher_routine(t_philosopher_bonus *philo,
+								t_data_bonus *data);
+void						*ft_spectator_routine(void *arg);
 
 #endif

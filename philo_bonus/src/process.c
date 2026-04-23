@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 23:15:11 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/23 15:27:42 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/23 16:50:08 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_wait_for_philosophers(t_data_bonus *data)
 {
-	int status;
+	int	status;
 	int	i;
 
 	i = 0;
@@ -40,12 +40,12 @@ int	ft_process_philosophers(t_data_bonus *data)
 	int					id;
 	t_philosopher_bonus	*philo;
 
-	id = 0;
-	while (id < data->n_philosophers)
+	id = -1;
+	while (id++ < data->n_philosophers)
 	{
 		philo = ft_init_philosopher(id + 1, data);
 		if (philo == NULL)
-			return(ft_putstr_fd(INIT_PHILO_ERR, STDERR_FILENO), 1);
+			return (ft_putstr_fd(INIT_PHILO_ERR, STDERR_FILENO), 1);
 		philo->pid = fork();
 		if (philo->pid == 0)
 		{
@@ -56,10 +56,9 @@ int	ft_process_philosophers(t_data_bonus *data)
 			exit(0);
 		}
 		else if (philo->pid < 0)
-			return(free(philo), ft_putstr_fd(FORK_ERR, STDERR_FILENO), 1);
+			return (free(philo), ft_putstr_fd(FORK_ERR, STDERR_FILENO), 1);
 		data->pids[id] = philo->pid;
 		free(philo);
-		id++;
 	}
 	ft_wait_for_philosophers(data);
 	return (0);

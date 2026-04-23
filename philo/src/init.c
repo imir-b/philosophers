@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:54:39 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 18:10:12 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/23 15:35:13 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_create_philosophers(t_data *data)
 
 int	ft_check_data(t_data *data)
 {
-	if (data->n_philosophers <= 0 || data->n_philosophers > 200
+	if (data->n_philosophers <= 0 || data->n_philosophers > MAX_PHILOSOPHERS
 		|| data->time_to_die <= 0 || data->time_to_eat <= 0
 		|| data->time_to_sleep <= 0)
 		return (1);

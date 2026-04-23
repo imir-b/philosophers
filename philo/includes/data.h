@@ -6,12 +6,14 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 02:47:03 by vlad              #+#    #+#             */
-/*   Updated: 2026/04/17 18:08:40 by vlad             ###   ########.fr       */
+/*   Updated: 2026/04/23 15:04:34 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
+
+# define MAX_PHILOSOPHERS 200
 
 typedef struct s_philosopher			t_philosopher;
 
